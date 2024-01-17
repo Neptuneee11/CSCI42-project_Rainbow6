@@ -6,5 +6,5 @@ _Name - github_username_ \
 Sy, Star Neptune R. - Neptuneee11 \
 Gagalac, Albert - [github username] \
 Ballesteros, Neo - [github username] \
-Amador, JM - [github username] \
+Amador, JM - kenkaster001 \
 Hermosisima, Joaquin - [github username]
