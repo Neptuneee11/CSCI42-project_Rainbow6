@@ -6,6 +6,6 @@ _Name - github_username_ \
 Sy, Star Neptune R. - Neptuneee11 \
 Gagalac, Albert - is_potions \
 Ballesteros, Neo - N03L9 \
-Amador, JM - kenkaster001 \
+Amador, John Michael T. - kenkaster001 \
 Hermosisima, Joaquin - [github username] \
 Idquival, Andre - [github username]
