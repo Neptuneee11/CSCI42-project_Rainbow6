@@ -5,6 +5,6 @@ This repository contains everything from diagrams to documentation to truth tabl
 _Name - github_username_ \
 Sy, Star Neptune R. - Neptuneee11 \
 Gagalac, Albert - [github username] \
-Ballesteros, Neo - [github username] \
+Ballesteros, Neo - N03L9 \
 Amador, JM - kenkaster001 \
 Hermosisima, Joaquin - [github username]
