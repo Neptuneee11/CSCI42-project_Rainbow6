@@ -7,4 +7,5 @@ Sy, Star Neptune R. - Neptuneee11 \
 Gagalac, Albert - [github username] \
 Ballesteros, Neo - N03L9 \
 Amador, JM - kenkaster001 \
-Hermosisima, Joaquin - [github username]
+Hermosisima, Joaquin - [github username] \
+Idquival, Andre - [github username]
