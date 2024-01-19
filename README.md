@@ -8,4 +8,4 @@ Gagalac, Albert - is_potions \
 Ballesteros, Neo - N03L9 \
 Amador, John Michael T. - kenkaster001 \
 Hermosisima, Joaquin - [github username] \
-Idquival, Andre - [github username]
+Idquival, Andre - Aec110 \
