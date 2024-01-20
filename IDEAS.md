@@ -1,6 +1,9 @@
 # Project ideas
-## AISIS 2
-  Improvements on Current AISIS Systems \
+## Lubak on Track
+  A webapp on rating road conditions of philippine roads. Supposedly aimed for cyclists \
+  There's profiles and rides \
+  Oks sana kung update siya sa strava \
+  Local Governments could use this to track of road constructions \
 ## Bike Rentals 
   Make renting bikes accessible in Ateneo \
 ## Profs to Pick 2 
