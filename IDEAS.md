@@ -19,11 +19,11 @@ Idquival, Andre
 
 ## Bike Rentals 
   Make renting bikes accessible in Ateneo. \
-  The idea came into fruition due to the excessive number of cars in Ateneo which leads to a "traffic-lock" during peak hours.\
-
+  The idea came into fruition due to the excessive number of cars in Ateneo which leads to a "traffic-lock" during peak hours. The bike-rental idea hopes to lessen the traffic inside campus and make travelling faster for the users.\
 ### Features:
 * Locating bikes which are 'ready-to-be-used'
 * Locating stations to be able to leave the bike once rented.
+* Option for users to allow their personal bikes to be rented out by users of the app.
 * 
 ## Profs to Pick 2 
  A web app that streamlines the Profs to Pick experience from simply being a forum in the Facebook page to a standalone platform dedicated to improving and easing experience for Ateneo college students.\
