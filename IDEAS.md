@@ -19,16 +19,17 @@ Idquival, Andre
 
 ## Bike Rentals 
   Make renting bikes accessible in Ateneo \
+  
 ## Profs to Pick 2 
  A web app that streamlines the Profs to Pick experience from simply being a forum in the Facebook page to a standalone platform dedicated to improving and easing experience for Ateneo college students.\
 
-###Features:
-*Dedicated Profiles for professors with basic information and a dashboard of common characteristics often used by the students to describe the professor
-*Includes a star rating and review system which can be sorted from most recent, to most relevant based on the most liked comment
-*Includes a separate page for recommendations on passing the professor's class
-*User must use obf or ateneo email in order to gain access to the web app, increasing its reliability and authenticity
-*Search query for professor based on star rating, and subject's taught by professor
-*Advance search query based on the semester to see that semester's reviews, and star rating on the professor
-*Feature page of current highly rated professors
-*Admin discretion to remove foul reviews that are inauthentic based on user feedback 
-*Page for user feedback on possible improvements and implementations on the app
+### Features:
+* Dedicated Profiles for professors with basic information and a dashboard of common characteristics often used by the students to describe the professor
+* Includes a star rating and review system which can be sorted from most recent, to most relevant based on the most liked comment
+* Includes a separate page for recommendations on passing the professor's class
+* User must use obf or ateneo email in order to gain access to the web app, increasing its reliability and authenticity
+* Search query for professor based on star rating, and subject's taught by professor
+* Advance search query based on the semester to see that semester's reviews, and star rating on the professor
+* Feature page of current highly rated professors
+* Admin discretion to remove foul reviews that are inauthentic based on user feedback 
+* Page for user feedback on possible improvements and implementations on the app
