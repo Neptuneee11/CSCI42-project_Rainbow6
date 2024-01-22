@@ -24,7 +24,7 @@ Idquival, Andre
 * Locating bikes which are 'ready-to-be-used'
 * Locating stations to be able to leave the bike once rented.
 * Option for users to allow their personal bikes to be rented out by users of the app.
-* 
+* Allow the bike owners to change the status of their bike once they need to use it. 
 ## Profs to Pick 2 
  A web app that streamlines the Profs to Pick experience from simply being a forum in the Facebook page to a standalone platform dedicated to improving and easing experience for Ateneo college students.\
 
