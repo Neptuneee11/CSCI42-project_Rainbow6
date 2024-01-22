@@ -7,5 +7,5 @@ Sy, Star Neptune R. - Neptuneee11 \
 Gagalac, Albert - is_potions \
 Ballesteros, Neo - N03L9 \
 Amador, John Michael T. - kenkaster001 \
-Hermosisima, Joaquin - [github username] \
+Hermosisima, Joaquin - JoaquinHermosisima \
 Idquival, Andre - Aec110
