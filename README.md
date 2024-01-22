@@ -4,7 +4,7 @@ This repository contains everything from diagrams to documentation to truth tabl
 # Members
 _Name - github_username_ \
 Sy, Star Neptune R. - Neptuneee11 \
-Gagalac, Albert - is_potions \
+Gagalac, Albert - Albert Gagalac \
 Ballesteros, Neo - N03L9 \
 Amador, John Michael T. - kenkaster001 \
 Hermosisima, Joaquin - JoaquinHermosisima \
