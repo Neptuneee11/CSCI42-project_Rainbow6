@@ -42,3 +42,14 @@ Idquival, Andre
 * Feature page of current highly rated professors
 * Admin discretion to remove foul reviews that are inauthentic based on user feedback 
 * Page for user feedback on possible improvements and implementations on the app
+
+## Mental Health Tracker
+ A web app that allows Ateneo college students and professors to track and manage their mental health. \
+### Features:
+* Journal section that has a mood scale (i.e. On a scale of 1-5, how happy are you?) and lets you expound about this
+* Stress level assessments that give prompts to users that allows them to assess their stress level
+* Sleep monitoring included to track their sleping habits and patterns
+* Mindfulness and Relaxation Exercises (i.e. breathing cycles, meditation)
+* Goal Setting and Achievement Tracker (sets mental health goal like improving social skills and practicing gratitude. App tracks the progress towards this goal)
+* Forums that include community support where users share their advice and experiences
+* Helplines that include Ateneo Psychology Centre along with other guidance counselors
