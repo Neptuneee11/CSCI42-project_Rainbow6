@@ -18,8 +18,13 @@ Idquival, Andre
 * Posts can be categorized into pointing out one obstruction, or a review of a certain stretch of road.
 
 ## Bike Rentals 
-  Make renting bikes accessible in Ateneo \
-  
+  Make renting bikes accessible in Ateneo. \
+  The idea came into fruition due to the excessive number of cars in Ateneo which leads to a "traffic-lock" during peak hours.\
+
+###Features:
+* Locating bikes which are 'ready-to-be-used'
+* Locating stations to be able to leave the bike once rented.
+* 
 ## Profs to Pick 2 
  A web app that streamlines the Profs to Pick experience from simply being a forum in the Facebook page to a standalone platform dedicated to improving and easing experience for Ateneo college students.\
 
