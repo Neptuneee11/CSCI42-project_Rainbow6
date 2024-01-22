@@ -21,7 +21,7 @@ Idquival, Andre
   Make renting bikes accessible in Ateneo. \
   The idea came into fruition due to the excessive number of cars in Ateneo which leads to a "traffic-lock" during peak hours.\
 
-###Features:
+### Features:
 * Locating bikes which are 'ready-to-be-used'
 * Locating stations to be able to leave the bike once rented.
 * 
