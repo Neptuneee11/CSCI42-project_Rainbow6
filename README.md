@@ -1,6 +1,9 @@
 # CSCI42-project_Rainbow6
 This repository contains everything from diagrams to documentation to truth tables. Made by our group 5 Guys Technologies Inc. United.
 
+[Drive link for commenting](https://drive.google.com/file/d/1l2twNZSvD8vcauIDmK8DwEhbC4elnEif/view?usp=sharing)
+
+
 # Members
 _Name - github_username_ \
 Sy, Star Neptune R. - Neptuneee11 \
