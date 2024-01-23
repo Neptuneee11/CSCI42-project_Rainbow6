@@ -1,5 +1,5 @@
 # CSCI42-project_Rainbow6
-This repository contains everything from diagrams to documentation to truth tables. Made by our group 5 Guys Technologies Inc. United.
+This repository contains everything from diagrams to documentation to truth tables. Made by our group Rainbow 6
 
 # Members
 _Name - github_username_ \
