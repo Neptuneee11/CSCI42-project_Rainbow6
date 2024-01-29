@@ -1,0 +1,160 @@
+{
+  "main": {
+    "id": "b77291fe362b6444",
+    "type": "split",
+    "children": [
+      {
+        "id": "a44a9cf58636904e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e7a7d196fd63bad2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Consultation -  Jan 29, 2024.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ed02daa39f1b7b7c",
+    "type": "split",
+    "children": [
+      {
+        "id": "4700d5fb1e84046b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "723a8da4c1c6c963",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3977b9f8fc59e401",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "26dc65b84856149c",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c405135d4a911f25",
+    "type": "split",
+    "children": [
+      {
+        "id": "72833ce8e61c5755",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "86958d87f7cbe287",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Consultation -  Jan 29, 2024.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6840eedc26d09270",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Consultation -  Jan 29, 2024.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e2f37285a05e7ad4",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9a340109410dc443",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Consultation -  Jan 29, 2024.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "e7a7d196fd63bad2",
+  "lastOpenFiles": [
+    "attachments/consultation_chat_1.png",
+    "Consultation -  Jan 29, 2024.md",
+    "README.md",
+    "attachments/consultation.md",
+    "attachments.md",
+    "IDEAS.md",
+    "attachments/consultation chat 1.png.crdownload",
+    "attachments"
+  ]
+}
