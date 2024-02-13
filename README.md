@@ -12,3 +12,7 @@ Ballesteros, Neo - N03L9 \
 Amador, John Michael T. - kenkaster001 \
 Hermosisima, Joaquin - JoaquinHermosisima \
 Idquival, Andre - Aec110
+
+# Update
+
+You can't directly commit to main anymore. Make your own branch and merge it via a pull request that needs approval.
