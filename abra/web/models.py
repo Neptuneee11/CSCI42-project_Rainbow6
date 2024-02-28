@@ -18,4 +18,4 @@ class Transaction(models.Model):
     Customer_ID = models.ForeignKey(Customer, on_delete=models.CASCADE)
     Bike_NO = models.ForeignKey(Bike, on_delete=models.CASCADE)
     Duration = models.IntegerField()
-    rice = models.IntegerField()
+    Price = models.IntegerField()

@@ -9,10 +9,10 @@ class AuthenticationAdmin(admin.ModelAdmin):
     list_display = ["Customer_ID", "Password"]
 
 class BikeAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["Bike_NO"]
 
 class TransactionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["Transaction_NO", "Duration", "Price"]
 
 admin.site.register(Customer, CustomerAdmin)
 admin.site.register(Authentication, AuthenticationAdmin)
