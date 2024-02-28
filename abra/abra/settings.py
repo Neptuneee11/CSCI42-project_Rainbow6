@@ -75,9 +75,16 @@ WSGI_APPLICATION = 'abra.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default': {  
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': 'abra',  
+        'USER': 'root',  
+        'PASSWORD': '4090632Ab',  
+        'HOST': '127.0.0.1',  
+        'PORT': '3306',  
+        'OPTIONS': {  
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
+        }  
     }
 }
 
