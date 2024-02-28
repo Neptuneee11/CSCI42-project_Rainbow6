@@ -3,10 +3,10 @@ from .models import Customer, Authentication, Bike, Transaction
 
 # Register your models here.
 class CustomerAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["Customer_ID", "Last_Name", "First_Name"]
 
 class AuthenticationAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["Customer_ID", "Password"]
 
 class BikeAdmin(admin.ModelAdmin):
     pass
