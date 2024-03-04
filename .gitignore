@@ -6747,3 +6747,12 @@ venv/Scripts/sqlformat.exe
 venv/Include 
 venv/Lib
 venv/Scripts
+venv/pyvenv.cfg
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+media
+.env
