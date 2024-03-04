@@ -6969,3 +6969,15 @@ venv/Lib/site-packages/urllib3/util/url.py
 venv/Lib/site-packages/urllib3/util/util.py
 venv/Lib/site-packages/urllib3/util/wait.py
 venv/Scripts/normalizer.exe
+abra/abra/__pycache__/settings.cpython-310.pyc
+abra/abra/__pycache__/urls.cpython-310.pyc
+abra/abra/__pycache__/wsgi.cpython-310.pyc
+abra/db.sqlite3
+abra/web/__pycache__/__init__.cpython-310.pyc
+abra/web/__pycache__/admin.cpython-310.pyc
+abra/web/__pycache__/apps.cpython-310.pyc
+abra/web/__pycache__/models.cpython-310.pyc
+abra/web/__pycache__/urls.cpython-310.pyc
+abra/web/__pycache__/views.cpython-310.pyc
+abra/web/migrations/__pycache__/__init__.cpython-310.pyc
+abra/abra/__pycache__/settings.cpython-310.pyc
