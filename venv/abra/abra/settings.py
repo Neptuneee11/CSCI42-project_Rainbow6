@@ -90,6 +90,11 @@ DATABASES = {
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
         }  
+    },
+
+    'for_qr': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
