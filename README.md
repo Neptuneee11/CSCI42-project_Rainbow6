@@ -1,5 +1,5 @@
 # CSCI42-project_Rainbow6
-This repository contains everything from diagrams to documentation to truth tables. Made by our group Rainbow 6
+This repository contains our group project for a webapp that supposed to handle bicycle rentals. 
 
 [Drive link for commenting](https://drive.google.com/file/d/1l2twNZSvD8vcauIDmK8DwEhbC4elnEif/view?usp=sharing)
 
