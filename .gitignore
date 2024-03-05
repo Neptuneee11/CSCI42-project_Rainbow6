@@ -6745,3 +6745,5 @@ venv/Scripts/sqlformat.exe
 venv/Lib
 venv/Scripts
 venv/Include
+
+.env
