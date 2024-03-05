@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'abra.wsgi.application'
 DATABASES = {
     'default': {  
         'ENGINE': 'django.db.backends.mysql',  
-        'NAME': 'abrpythoa',  
+        'NAME': 'abra',  
         'USER': 'root',  
         'PASSWORD': os.getenv("SECRET_MYSQL"),  
         'HOST': '127.0.0.1',  
