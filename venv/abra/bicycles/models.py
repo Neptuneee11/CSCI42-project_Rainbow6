@@ -5,15 +5,16 @@ from django.urls import reverse
 # Create your models here.
 class Bicycle(models.Model):
     # available, rented, under maintenance
-    state = FSMField(default = "available", protected = True)
+    state = FSMField(default = "available", protected = False)
     STATIONS = {
-    "Bellarmine",
-    "Matteo Ricci",
-    "Leong",
-    "CTC",
-    "Seminary",
+        "BEL":"Bellarmine",
+        "MACCI":"Matteo Ricci",
+        "LEO":"Leong",
+        "CTC":"CTC",
+        "SEM":"Seminary",
     }
-    location = models.CharField(choices = STATIONS, blank = False)
+    
+    location = models.CharField(max_length = 90, choices = STATIONS, blank = False)
 
     @transition(field=state, source="available", target="in_use")
     def getRented(self):
