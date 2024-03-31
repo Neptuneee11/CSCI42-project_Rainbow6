@@ -6742,9 +6742,12 @@ venv/Scripts/python.exe
 venv/Scripts/pythonw.exe
 venv/Scripts/sqlformat.exe
 
+venv/Lib
+venv/Scripts
+venv/Include
+
 .env
 
-venv/Include 
 venv/Lib
 venv/Scripts
 venv/pyvenv.cfg

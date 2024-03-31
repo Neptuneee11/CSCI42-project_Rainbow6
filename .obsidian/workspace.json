@@ -148,8 +148,20 @@
   },
   "active": "0112a57f157786d1",
   "lastOpenFiles": [
+    "venv/abra/bicycles/templates/bicycles/bicycle-list.html",
+    "venv/abra/bicycles/templates/bicycles/bicycle-details.html",
+    "venv/abra/bicycles/templates/bicycles/bicycle-detailview.html",
+    "venv/abra/bicycles/templates/bicycles",
+    "venv/abra/bicycles/templates",
+    "venv/abra/templates/bicycles",
+    "venv/abra/bicycles/urls.py",
+    "venv/abra/templates/base.html",
+    "venv/abra/templates",
+    "venv/abra/bicycles/migrations/__init__.py",
+    "venv/abra/bicycles/__init__.py",
+    "attachments/Untitled.canvas",
+    "README.md",
     "attachments/consultation_chat_1.png",
-    "attachments",
     "Consultation_Jan_29_2024.md",
     "IDEAS.md"
   ]
