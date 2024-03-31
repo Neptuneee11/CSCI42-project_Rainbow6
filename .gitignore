@@ -6753,3 +6753,4 @@ venv/Scripts
 venv/Include
 
 .env
+*.pyc
