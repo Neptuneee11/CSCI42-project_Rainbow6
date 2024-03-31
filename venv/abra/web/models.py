@@ -1,6 +1,4 @@
 from django.db import models
-import qrcode
-from io import BytesIO
 from django.core.files import File
 from PIL import Image, ImageDraw
 
@@ -16,24 +14,12 @@ class Authentication(models.Model):
 
 
 class Bike(models.Model):
-    Code = models.ImageField(blank=True, upload_to='Code')
-    Bike_NO = models.CharField(max_length=255, primary_key=True)
+    id = models.AutoField()
 
     def __str__(self) -> str:
-        return self.Bike_NO
+        return self.id
     
-    def save(self, *args, **kwargs):
-        qr_image = qrcode.make(self.Bike_NO)
-        qr_offset = Image.new('RGB', (310,310), 'white')
-        qr_offset.paste(qr_image)
-        files_name = f'{self.Bike_NO}-{self.id}qr.png'
-        stream = BytesIO()
-        qr_offset.save(stream, 'PNG')
-        self.Code.save(files_name, File(stream), save=False)
-        qr_offset.close()
-        super().save(*args,**kwargs)
 
-    
 class Transaction(models.Model):
     Transaction_NO = models.CharField(max_length=255, primary_key=True)
     Customer_ID = models.ForeignKey(Customer, on_delete=models.CASCADE)
