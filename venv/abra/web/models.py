@@ -12,6 +12,8 @@ class Authentication(models.Model):
 
 class Bike(models.Model):
     Bike_NO = models.CharField(max_length=255, primary_key=True)
+    Bike_Location = models.CharField(max_length=255)
+    Bike_Status = models.CharField(max_length=3)
 
 class Transaction(models.Model):
     Transaction_NO = models.CharField(max_length=255, primary_key=True)

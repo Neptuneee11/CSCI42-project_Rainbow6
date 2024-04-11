@@ -1,0 +1,20 @@
+<style type="text/css">
+</style>
+{% extends "base.html" %}
+{% block title %} Bike List View {% endblock %}
+{% block content %}
+<h1>
+    Available Bikes
+</h1>
+
+
+{% for instance in object_list %}
+<div class='Center-text'>
+    <p>Bike: {{instance.Bike_NO}}</p>
+    <p>Location: {{instance.Bike_Location}}</p>
+    <p>Availability: {{instance.Bike_Status}}</p>
+</div>
+{% endfor %}
+
+
+{% endblock %}
