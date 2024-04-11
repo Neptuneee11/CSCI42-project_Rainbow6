@@ -6,7 +6,7 @@ from .models import Bicycle
 # Create your views here.
 def index(request):
     bicycle = Bicycle.objects.all()
-    return render(request, 'bicycles/bicycle-list.html', {'bicycle': bicycle,})
+    return render(request, 'bike_list.html', {'bicycle': bicycle,})
 
 class bicycleDetailView(DetailView):
     model = Bicycle

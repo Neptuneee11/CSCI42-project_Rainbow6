@@ -8,11 +8,11 @@
 </h1>
 
 
-{% for instance in object_list %}
+{% for bike in bicycle %}
 <div class='Center-text'>
-    <p>Bike: {{instance.Bike_NO}}</p>
-    <p>Location: {{instance.Bike_Location}}</p>
-    <p>Availability: {{instance.Bike_Status}}</p>
+    <p>Bike: {{bike.id}}</p>
+    <p>State: {{bike.state}}</p>
+    <p>Location: {{bike.location}}</p>
 </div>
 {% endfor %}
 
