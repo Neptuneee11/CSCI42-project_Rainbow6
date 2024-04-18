@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import index
+from .views import qrScan
 
 urlpatterns = [
-path('', index, name='index'),
+    path('', qrScan, name='qrScan'),
 ]
 
 app_name = "qrScanner"
