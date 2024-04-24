@@ -18,6 +18,15 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    # Default URLs
     path('admin/', admin.site.urls),
+
+    # Web URLs
     path('web/', include('web.urls', namespace='web')),
+
+    # Weird URL
+    path("accounts/", include("django.contrib.auth.urls")),
+
+    # Customer URLs
+    path('customer/', include('Customer.urls'))
 ]
