@@ -1,24 +1,74 @@
-<style type="text/css">
-</style>
-{% extends "base.html" %}
-{% load static %}
-{% block title %} Home Page {% endblock %}
-{% block content %}
-<h1>
-    ABRA WEBSITE
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initia
+    -scale=1.0">
+    <title>Customer Profile - Bike Rental App</title>
+</head>
+<body>
+    <h1>Customer Profile</h1>
+    <form action="submit_profile.php" method="POST">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="fullname">Full Name:</label>
+            <input type="text" id="fullname" name="fullname" required><br>
+            <label for="idnumber">ID Number:</label>
+            <input type="text" id="idnumber" name="idnumber" required><br>
+            <label for="schoolyear">School Year:</label>
+            <input type="text" id="schoolyear" name="schoolyear"><br>
+            <label for="course">Course:</label>
+            <input type="text" id="course" name="course"><br>
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="birthday" required><br>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required><br>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
+        </fieldset>
 
-<h2>
-    <div class="clock">
-        Time is: <div id = "clock"></div>
-    </div>
-</h2>
+        <fieldset>
+            <legend>Rental History</legend>
+            <label for="previous_rentals">Previous Rental Dates and Duration:</label>
+            <textarea id="previous_rentals" name="previous_rentals"></textarea><br>
+            <label for="ratings">Ratings:</label>
+            <input type="number" id="ratings" name="ratings" min="1" max="5" step="0.1">
+        </fieldset>
 
-<div class="map">
-    <img id = "map" src="{% static 'map.png' %}" class="map-image">
-</div>
+        <fieldset>
+            <legend>Payment Information</legend>
+            <label for="payment_method">Payment Method:</label>
+            <select id="payment_method" name="payment_method">
+                <option value="credit_card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="bank_transfer">Bank Transfer</option>
+            </select><br>
+            <label for="billing_address">Billing Address:</label>
+            <input type="text" id="billing_address" name="billing_address" required>
+        </fieldset>
 
-{% comment %} <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis urna eu libero tristique vehicula. Sed nisl purus, tristique sit amet accumsan sit amet, molestie eget enim. Phasellus pellentesque ex mauris, sit amet rhoncus ligula commodo non. Aenean ut ullamcorper est. Curabitur arcu turpis, sagittis non lorem eget, tempor facilisis massa. Vivamus viverra, urna quis interdum eleifend, quam lectus interdum erat, porttitor pulvinar lectus dui et nisi. Curabitur vulputate, urna at lobortis sagittis, magna tellus efficitur tellus, ut faucibus massa sapien non lacus. Sed fringilla ex id ipsum aliquet imperdiet. Morbi facilisis ullamcorper neque vel commodo. Morbi a nisi vel ipsum viverra hendrerit quis sit amet arcu. Vestibulum dui dui, luctus interdum turpis maximus, dictum lobortis elit. Sed elementum ac ipsum vel malesuada. Vivamus in commodo augue. Donec eu pretium risus. Ut id lacinia velit, accumsan porta sem.
+        <fieldset>
+            <legend>Liability Waiver</legend>
+            <p>Please read and accept the liability waiver:</p>
+            <textarea readonly>
+I hereby declare that I have read and understood the conditions of the liability waiver and agree to all its terms and conditions. I assume all risks associated with renting a bike including but not limited to injury and damage.
+            </textarea>
+            <label><input type="checkbox" name="waiver_accepted" required> I accept the Liability Waiver</label>
+        </fieldset>
 
-    Suspendisse a tristique dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu felis pharetra, consequat arcu nec, imperdiet libero. Sed ultricies risus felis. Praesent vehicula nibh ut tortor gravida tincidunt. Morbi aliquam dapibus leo, non mollis dui tempor et. Integer hendrerit sollicitudin orci, ac efficitur nisl rhoncus nec. Cras quis justo libero. Curabitur finibus ipsum in ex posuere, vel fringilla orci sollicitudin. Sed nec ex nec leo efficitur placerat. Duis elementum, libero et congue ullamcorper, sapien felis viverra tellus, mattis tristique urna ligula a dolor. Sed faucibus sit amet ex non fringilla. </p> {% endcomment %}
-{% endblock %}
+        <fieldset>
+            <legend>Emergency Contact</legend>
+            <label for="emergency_name">Name:</label>
+            <input type="text" id="emergency_name" name="emergency_name" required><br>
+            <label for="emergency_relationship">Relationship:</label>
+            <input type="text" id="emergency_relationship" name="emergency_relationship" required><br>
+            <label for="emergency_phone">Contact Number:</label>
+            <input type="tel" id="emergency_phone" name="emergency_phone" required>
+        </fieldset>
+
+        <button type="submit">Submit Profile</button>
+    </form>
+</body>
+</html>
