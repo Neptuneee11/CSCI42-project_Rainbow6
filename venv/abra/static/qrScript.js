@@ -15,7 +15,18 @@ domReady(function () {
     function onScanSuccess(decodeText, decodeResult) {
         alert("Successfully scanned qr code");
         // send a post request to the django server to change the state of the bike
-        
+
+        const csrftoken = getCookie('csrftoken'); // function to retrieve cookie value
+        fetch(decodeText, {
+        method: 'POST',
+        headers: {
+            "X-CSRFToken": csrftoken,
+            'state' : 'rented'
+        },
+        body: JSON.stringify({ "id": 78912 })
+        })
+        .then(response => response.json())
+        .then(response => console.log(JSON.stringify(response)))
 
         window.location.assign(decodeText);
     }

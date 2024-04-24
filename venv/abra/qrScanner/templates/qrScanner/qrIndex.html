@@ -7,6 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport"
 		content="width=device-width, initial-scale=1.0">
+
 	<link rel="stylesheet" href="{% static 'qrAesthetic.css' %}">
 	<title>QR Code Scanner / Reader
 	</title>
@@ -24,7 +25,65 @@
 	<script
 		src="https://unpkg.com/html5-qrcode">
 	</script>
-	<script src={% static 'qrScript.js' %}></script>
+	<script>
+		function domReady(fn) {
+			if (
+				document.readyState === "complete" ||
+				document.readyState === "interactive"
+			) {
+				setTimeout(fn, 1000);
+			} else {
+				document.addEventListener("DOMContentLoaded", fn);
+			}
+		}
+		 
+		domReady(function () {
+		 
+			// If found you qr code
+			function onScanSuccess(decodeText, decodeResult) {
+				alert("Successfully scanned qr code");
+				// send a post request to the django server to change the state of the bike
+				 
+				// Function to get the CSRF token from the cookie
+				function getCookie(name) {
+					const value = `; ${document.cookie}`;
+					const parts = value.split(`; ${name}=`);
+					if (parts.length === 2) return parts.pop().split(';').shift();
+				}
+		 
+				// Function to send a POST request with CSRF token
+				
+				const csrfToken = getCookie('csrftoken');
+		
+				const data = { state: 'rented' };
+		
+				fetch(decodeText, {
+					method: 'POST',
+					headers: {
+						'state': 'rented',
+						'X-CSRFToken': csrfToken // Include the CSRF token in the header
+					},
+					body: JSON.stringify(data)
+				})
+				.then(response => response.json())
+				.then(data => {
+					console.log('Response from server:', data);
+				})
+				.catch(error => {
+					console.error('Error:', error);
+				});
+				
+		
+				window.location.assign(decodeText);
+			}
+		 
+			let htmlscanner = new Html5QrcodeScanner(
+				"my-qr-reader",
+				{ fps: 10, qrbos: 250 }
+			);
+			htmlscanner.render(onScanSuccess);
+		});
+	</script>
 </body>
 
 </html>

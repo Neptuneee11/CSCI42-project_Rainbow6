@@ -9,6 +9,12 @@ def bicycleDetailView(request, pk):
 
     bicy = Bicycle.objects.get(pk=pk)
 
+    if request.method == 'POST':
+        import json
+        post_data = json.loads(request.body.decode("utf-8"))
+        print(post_data)
+        pass
+
     return render(request,'bicycles/bicycleDetail.html', {'object' : bicy})
 
 
