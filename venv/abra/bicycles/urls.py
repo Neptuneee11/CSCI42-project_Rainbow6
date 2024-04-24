@@ -1,11 +1,11 @@
 from django.urls import path
 
-from .views import bicycleDetailView
+from .views import bicycleDetailView, bicycleListView
 
 
 urlpatterns = [
-    #path('bicycles/', index, name='index'),
-    path('bicycles/<int:pk>/details/', bicycleDetailView.as_view(), name='user-details'),
+    path('', bicycleListView.as_view(), name='bicycle-list'),
+    path('<int:pk>/details/', bicycleDetailView, name='bicycle-details'),
     #path('bicycles/add/', UserCreateView.as_view(), name='user-add'),
 ]
 

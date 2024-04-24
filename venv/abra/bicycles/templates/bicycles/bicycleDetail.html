@@ -1,0 +1,16 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'bicycleDetailAesthetic.css' %}">
+	
+</head>
+
+<body>
+    <div class = "contentBox">
+        <p> State: {{ object.state }} <br></p>
+        <p> Location: {{ object.location }} </p>
+    </div>
+</body>

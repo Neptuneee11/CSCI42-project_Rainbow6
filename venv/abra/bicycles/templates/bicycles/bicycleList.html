@@ -1,0 +1,27 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'bicycleDetailAesthetic.css' %}">
+	
+</head>
+
+<body>
+    <table>
+        <tr> 
+            <td> <b>Primary_key </b></td>
+            <td> <b>State </b></td>
+            <td> <b>Location </b></td>
+            <td> <b>Link </b></td>
+        </tr>
+        {% for object in object_list %}
+        <tr> 
+            <td> {{ object.pk }} </td>
+            <td> {{ object.state }} </td>
+            <td> {{ object.location }} </td>
+            <td> <a href = "{{ object.get_absolute_url }}/details/"> click here </a>
+        </tr>
+        {% endfor %}
+        </table>
+</body>

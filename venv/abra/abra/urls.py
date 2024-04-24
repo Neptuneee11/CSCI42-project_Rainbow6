@@ -20,5 +20,6 @@ from django.urls import include, path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('web/', include('web.urls', namespace='web')),
-    path('bicycleScanner/', include('qrScanner.urls', namespace="qrScanner"))
+    path('bicycleScanner/', include('qrScanner.urls', namespace="qrScanner")),
+    path('bicycles/', include('bicycles.urls', namespace='bicycle')),
 ]
