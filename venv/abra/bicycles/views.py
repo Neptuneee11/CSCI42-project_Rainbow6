@@ -1,6 +1,7 @@
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import render
+from .models import bicycleForm
 
 from .models import Bicycle
 
@@ -12,9 +13,14 @@ def bicycleDetailView(request, pk):
     if request.method == 'POST':
         import json
         post_data = json.loads(request.body.decode("utf-8"))
-        print(post_data)
-        pass
+        print(post_data['state'])
+        print(post_data['location'])
 
+        bicy.state = post_data['state']
+        bicy.location = post_data['location']
+
+        bicy.save()
+        
     return render(request,'bicycles/bicycleDetail.html', {'object' : bicy})
 
 

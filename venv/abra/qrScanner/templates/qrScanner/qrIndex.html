@@ -55,12 +55,11 @@
 				
 				const csrfToken = getCookie('csrftoken');
 		
-				const data = { state: 'rented' };
+				const data = { state: 'in_use' , location:'BEL'};
 		
 				fetch(decodeText, {
 					method: 'POST',
 					headers: {
-						'state': 'rented',
 						'X-CSRFToken': csrfToken // Include the CSRF token in the header
 					},
 					body: JSON.stringify(data)

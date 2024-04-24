@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelForm
 from django_fsm import FSMField, transition
 from django.urls import reverse
 
@@ -31,4 +32,9 @@ class Bicycle(models.Model):
 
     def get_absolute_url(self):
         return reverse('bicycles:bicycle-details', kwargs={'pk': self.pk})
+    
+class bicycleForm(ModelForm):
+    class Meta:
+        model = Bicycle
+        fields = ["state", "location"]
     
