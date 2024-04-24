@@ -7,15 +7,8 @@ class Customer(models.Model):
     id_number = models.CharField(max_length=20)
     school_year = models.CharField(max_length=50, blank=True, null=True)
     course = models.CharField(max_length=100, blank=True, null=True)
-    birthday = models.DateField()
     phone_number = models.CharField(max_length=20)
     email = models.EmailField()
-    address = models.TextField()
-
-class RentalHistory(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    rental_dates_and_duration = models.TextField()
-    ratings = models.DecimalField(max_digits=3, decimal_places=1, blank=True, null=True)
 
 class PaymentInfo(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
@@ -30,12 +23,6 @@ class PaymentInfo(models.Model):
 class LiabilityWaiver(models.Model):
     customer = models.OneToOneField(Customer, on_delete=models.CASCADE)
     waiver_accepted = models.BooleanField(default=False)
-
-class EmergencyContact(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-    relationship = models.CharField(max_length=100)
-    contact_number = models.CharField(max_length=20)
 
 def get_absolute_url(self):
     return reverse('bicycles:bicycle-details', kwargs={'pk': self.pk})
