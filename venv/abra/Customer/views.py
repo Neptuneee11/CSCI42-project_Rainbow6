@@ -1,19 +1,27 @@
-from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import CustomUser
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
+from .forms import CustomUserCreationForm, CustomUserAuthenticationForm
 
-class CustomUserCreationForm(UserCreationForm):
-    full_name = forms.CharField(max_length=100)
-    id_number = forms.CharField(max_length=20)
-    school_year = forms.CharField(max_length=4)
-    course = forms.CharField(max_length=100)
-    phone_number = forms.CharField(max_length=15)
+def register(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = CustomUserCreationForm()
+    return render(request, 'register.html', {'form': form})
 
-    class Meta:
-        model = CustomUser
-        fields = ('username', 'password1', 'password2', 'full_name', 'id_number', 'school_year', 'course', 'phone_number', 'email')
-
-class CustomUserAuthenticationForm(AuthenticationForm):
-    class Meta:
-        model = CustomUser
-        fields = ('username', 'password')
+def user_login(request):
+    if request.method == 'POST':
+        form = CustomUserAuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+    else:
+        form = CustomUserAuthenticationForm()
+    return render(request, 'login.html', {'form': form})
