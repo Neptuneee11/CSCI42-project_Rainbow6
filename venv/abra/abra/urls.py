@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from Customer import views as v
 
 urlpatterns = [
     # Default URLs
@@ -28,5 +29,5 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
 
     # Customer URLs
-    path('customer/', include('Customer.urls', namespace='Customer'))
+    path('register/', v.register, name="register"),
 ]
