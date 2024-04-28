@@ -11,7 +11,7 @@ class RegisterForm(UserCreationForm):
     id_number = forms.IntegerField(label="ID Number (e.g. '123456')", required=True, validators=[MinValueValidator(100000), MaxValueValidator(999999)])
     school_year = forms.CharField(label="School Year (e.g. 'Third Year')", max_length=20, required=True)
     course = forms.CharField(label="Course (e.g. 'Computer Science')", max_length=50, required=True)
-    phone_number = forms.IntegerField(label="Phone Number (e.g. '09xxxxxxxxx')", required=True, validators=[MinValueValidator(10000000000), MaxValueValidator(99999999999)])
+    phone_number = forms.IntegerField(label="Phone Number (e.g. '9xxxxxxxxx')", required=True, validators=[MinValueValidator(1000000000), MaxValueValidator(9999999999)])
     
 
     class Meta:

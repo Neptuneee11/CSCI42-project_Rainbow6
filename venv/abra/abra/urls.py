@@ -19,15 +19,16 @@ from django.urls import include, path
 from Customer import views as v
 
 urlpatterns = [
-    # Default URLs
+    # Default URL
     path('admin/', admin.site.urls),
 
-    # Web URLs
-    path('web/', include('web.urls', namespace='web')),
+    # Web or "Homepage" URL
+    path('', include('web.urls', namespace='web')),
 
-    # Weird URL
-    path("accounts/", include("django.contrib.auth.urls")),
-
-    # Customer URLs
+    # Account Creation URL
     path('register/', v.register, name="register"),
+
+    # Account Login URL (secretly a "login/")
+    path('', include("django.contrib.auth.urls")),
+
 ]
