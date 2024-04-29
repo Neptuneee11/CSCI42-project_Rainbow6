@@ -15,7 +15,7 @@
 
 <body>
 	<div class="container">
-		<h1>Scan QR Codes</h1>
+		<h1>Return the bike by scanning the qr code</h1>
 		<div class="section">
 			<div id="my-qr-reader">
 			</div>
@@ -54,8 +54,10 @@
 				// Function to send a POST request with CSRF token
 				
 				const csrfToken = getCookie('csrftoken');
+
+				//add the map hitbox soon
 		
-				const data = { state: 'in_use' , location:'BEL'};
+				const data = { state: 'Available' , location:'CTC'};
 		
 				fetch(decodeText, {
 					method: 'POST',
