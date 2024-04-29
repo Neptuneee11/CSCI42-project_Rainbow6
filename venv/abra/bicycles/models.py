@@ -13,6 +13,7 @@ class Bicycle(models.Model):
         "LEO":"Leong",
         "CTC":"CTC",
         "SEM":"Seminary",
+        "NaN":"None"
     }
     
     location = models.CharField(max_length = 90, choices = STATIONS, blank = False)
