@@ -6759,3 +6759,6 @@ venv/pyvenv.cfg
 __pycache__
 media
 .env
+*.pyc
+*.pyc
+*.pyc
