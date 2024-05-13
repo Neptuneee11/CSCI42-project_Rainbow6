@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
-from abra.bicycles import Bicycle
-from abra.Customer import UserProfile
+from bicycles.models import Bicycle
+from Customer.models import UserProfile
 
 # Create your models here.
 # dsd

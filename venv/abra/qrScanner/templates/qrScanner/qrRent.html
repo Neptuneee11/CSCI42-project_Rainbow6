@@ -106,7 +106,8 @@
 					isFinn = true;
 
 					const data = { state: 'in_use' , location: locationHere};
-		
+					
+					// post request to bicycle db
 					fetch(decodeText, {
 						method: 'POST',
 						headers: {
@@ -121,9 +122,45 @@
 					.catch(error => {
 						console.error('Error:', error);
 					});
+
+					const data2 = { customer:{{user.username}} };
+
+					//post request to transactions
+					fetch("//transactions", {
+						method: 'POST',
+						headers: {
+							'X-CSRFToken': csrfToken // Include the CSRF token in the header
+						},
+						body: JSON.stringify(data2)
+					})
+					.then(response => response.json())
+					.then(data => {
+						console.log('Response from server:', data);
+					})
+					.catch(error => {
+						console.error('Error:', error);
+					});
+
+					const data3 = { currentlyRenting: true };
+
+					//post request to Web
+					fetch("//web", {
+						method: 'POST',
+						headers: {
+							'X-CSRFToken': csrfToken // Include the CSRF token in the header
+						},
+						body: JSON.stringify(data3)
+					})
+					.then(response => response.json())
+					.then(data => {
+						console.log('Response from server:', data);
+					})
+					.catch(error => {
+						console.error('Error:', error);
+					});
 					
 			
-					window.location.assign(decodeText);
+					window.location.assign("//web");
 				}
 				
 			}
