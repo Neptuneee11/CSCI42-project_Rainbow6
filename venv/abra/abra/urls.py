@@ -24,6 +24,8 @@ urlpatterns = [
 
     # Web or "Homepage" URL
     path('', include('web.urls', namespace='web')),
+    path('', include('web.urls', namespace='web')),
+    path("accounts/", include("django.contrib.auth.urls")),
 
     # Account Creation URL
     path('register/', v.register, name="register"),
