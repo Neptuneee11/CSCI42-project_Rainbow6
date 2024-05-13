@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
-from django_fsm import FSMField, transition
-from django.urls import reverse
+from abra.bicycles import Bicycle
+from abra.Customer import UserProfile
 
 # Create your models here.
 # dsd
@@ -15,7 +15,7 @@ class Transaction(models.Model):
                 code="invalid_transaction_number"
             )
         ])
-    Customer_ID = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    Bike_NO = models.ForeignKey(Bike, on_delete=models.CASCADE)
+    Customer_ID = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    Bike_NO = models.ForeignKey(Bicycle, on_delete=models.CASCADE)
     Duration = models.IntegerField()
     Price = models.IntegerField()
