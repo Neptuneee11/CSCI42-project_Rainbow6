@@ -60,7 +60,7 @@
 				
 				const csrfToken = getCookie('csrftoken');
 
-				var locationHere = "CTC";
+				var locationHere = "Nan";
 				var isFinn = false;
 
 				//geolocation
@@ -100,10 +100,8 @@
 							}
 						
 						}
-
-					console.log("nan");
-					locationHere = "NaN";
-					isFinn = true;
+					
+					
 
 					const data = { state: 'in_use' , location: locationHere};
 					
@@ -123,7 +121,7 @@
 						console.error('Error:', error);
 					});
 
-					const data2 = { customer:{{user.username}} };
+					const data2 = { customer: String({{user.username}}), };
 
 					//post request to transactions
 					fetch("//transactions", {
@@ -160,7 +158,7 @@
 					});
 					
 			
-					window.location.assign("//web");
+					window.location.href = '../../web'; 
 				}
 				
 			}
