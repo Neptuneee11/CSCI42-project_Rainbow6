@@ -1,13 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}Profile Page{% endblock title %}
+{% block title %}User Information{% endblock %}
+{% load crispy_forms_tags %}
+
 {% block content %}
-    <div class="row my-3 p-3">
-        <h1>This is the profile page for {{user.username}}</h1>
-        
-        <h2>La talaga</h2>
+    <h2>User Information</h2>
+    <p>Username: {{ user.userprofile.user }}</p>
+    <p>First Name: {{ user.first_name }}</p>
+    <p>Last Name: {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone Number: {{ user.userprofile.phone_number }}</p>
+    <p>ID Number: {{ user.userprofile.id_number }}</p>
+    <p>School Year: {{ user.userprofile.school_year }}</p>
+    <p>Course: {{ user.userprofile.course }}</p>
 
-        <h2>{{user.id_number}}</h2>
-    </div>
-
-{% endblock content %}
+    <form method="POST" action="{% url 'logout' %}" class="form-group">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+{% endblock %}

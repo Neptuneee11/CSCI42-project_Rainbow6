@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='userprofile', null=True, on_delete=models.CASCADE)
     #first_name = models.CharField(max_length=100, blank=False)
     #last_name = models.CharField(max_length=100, blank=False)
     #email = models.EmailField(max_length=100, blank=False)
