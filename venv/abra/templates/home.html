@@ -9,9 +9,9 @@
 </h1>
 
 {% if user.is_authenticated %}
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in. <br> Not you? <a href="logout/"> log out </a></p>
 {% else %}
-    <p>Welcome, new user. Please log in.</p>
+    <p>Welcome, new user. Please <a href="login/"> log in </a>.</p>
 {% endif %}
 
 <h2>

@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'abra',  
         'USER': 'root',  
-        'PASSWORD': "getgood",  
+        'PASSWORD': os.getenv('SECRET_MYSQL'),  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
