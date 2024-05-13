@@ -21,8 +21,9 @@ from Customer.views import RegisterView
 urlpatterns = [
     # Default URL
     path('admin/', admin.site.urls),
-
-    # Web or "Homepage" URL
+    path('web/', include('web.urls', namespace='web')),
+    path('bicycleScanner/', include('qrScanner.urls', namespace="qrScanner")),
+    path('bicycles/', include('bicycles.urls', namespace='bicycle')),
     path('', include('web.urls', namespace='web')),
     path("accounts/", include("django.contrib.auth.urls")),
 

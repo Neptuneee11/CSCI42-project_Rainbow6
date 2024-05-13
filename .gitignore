@@ -6742,8 +6742,23 @@ venv/Scripts/python.exe
 venv/Scripts/pythonw.exe
 venv/Scripts/sqlformat.exe
 
-.env
-
-venv/Include 
 venv/Lib
 venv/Scripts
+venv/Include
+
+.env
+
+venv/Lib
+venv/Scripts
+venv/pyvenv.cfg
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+media
+.env
+*.pyc
+
+*.pyc

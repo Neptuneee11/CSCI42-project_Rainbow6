@@ -42,11 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bicycles',
     'web',
     'Transactions',
     'Customer',
     'crispy_forms',
     'crispy_bootstrap4',
+    'qrScanner',
 ]
 
 MIDDLEWARE = [
@@ -88,12 +90,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'abra',  
         'USER': 'root',  
-        'PASSWORD': os.getenv('SECRET_MYSQL'),  
+        'PASSWORD': os.getenv("SECRET_MYSQL"),  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
         }  
+    },
+
+    'for_qr': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -133,7 +140,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / "static",
 ]
 
 # Default primary key field type
