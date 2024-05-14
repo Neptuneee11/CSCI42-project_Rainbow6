@@ -31,12 +31,15 @@ def home(request):
             exttt+=1
             bicycle_pkey+=leChar
         
-        if post_data['currentlyRenting']:
+        if currentCustomer.isRenting:
             currentCustomer.time_since_last_rent = datetime.datetime.now()
             currentCustomer.currentlyRenting = Bicycle.objects.get(pk=bicycle_pkey[:-1])
+            currentCustomer.time_since_last_rent = datetime.datetime.now()
 
         else:
             pass
+
+        currentCustomer.save()
     
     if request.method == "GET":
         pass
