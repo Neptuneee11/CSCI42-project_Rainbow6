@@ -19,22 +19,21 @@ def home(request):
         post_data = json.loads(request.body.decode("utf-8"))
 
         currentCustomer.isRenting = post_data['currentlyRenting']
-        bicycle_link = post_data['currentBicyle']
+        bicycle_link = post_data['currentBicycle']
 
         #single out the pkey from the link
         bicycle_pkey = ""
         exttt = 0
         leChar = ""
         while leChar != "/":
-            leChar = bicycle_link[bicycle_link.find("/bicycles/")+len("/bicycles/")+ext]
+            leChar = bicycle_link[bicycle_link.find("/bicycles/")+len("/bicycles/")+exttt]
             print(leChar)
             exttt+=1
             bicycle_pkey+=leChar
-        bicycle_pkey.pop(len(bicycle_pkey)-1)
         
         if post_data['currentlyRenting']:
             currentCustomer.time_since_last_rent = datetime.datetime.now()
-            currentCustomer.currentlyRenting = Bicycle.objects.get(pk=bicycle_pkey)
+            currentCustomer.currentlyRenting = Bicycle.objects.get(pk=bicycle_pkey[:-1])
 
         else:
             pass

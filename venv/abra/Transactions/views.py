@@ -24,16 +24,15 @@ def logPage(request):
         exttt = 0
         leChar = ""
         while leChar != "/":
-            leChar = bicycle_link[bicycle_link.find("/bicycles/")+len("/bicycles/")+ext]
+            leChar = bicycle_link[bicycle_link.find("/bicycles/")+len("/bicycles/")+exttt]
             print(leChar)
             exttt+=1
             bicycle_pkey+=leChar
-        bicycle_pkey.pop(len(bicycle_pkey)-1)
 
         if transaction_type == "Rent":
             Transaction.objects.create(
-                Customer_ID = User,
-                Bike_NO = Bicycle.objects.get(pk=bicycle_pkey),
+                Customer_ID = request.user,
+                Bike_NO = Bicycle.objects.get(pk=bicycle_pkey[:-1]),
             )
             
         elif transaction_type == "Return":
@@ -52,10 +51,10 @@ def logPage(request):
                     return ans
 
             Transaction.objects.create(
-                Customer_ID = User,
+                Customer_ID = request.user,
                 Bike_NO = Bicycle.objects.get(pk=bicycle_pkey),
-                Duration = datetime.datetime.now() - User.profile.transaction_time,
-                Price = rentRate(datetime.datetime.now() - User.profile.transaction_time)
+                Duration = datetime.datetime.now() - request.user.profile.transaction_time,
+                Price = rentRate(datetime.datetime.now() - request.user.profile.transaction_time)
             )
             
 
