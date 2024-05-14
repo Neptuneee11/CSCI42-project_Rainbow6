@@ -104,6 +104,7 @@ if (post.STATE == 'available'){
 		.then(response => response.json())
 		.then(data => {
 			console.log('Response from server:', data);
+			//window.location.href = '../../web'; 
 		})
 		.catch(error => {
 			console.error('Error:', error);
