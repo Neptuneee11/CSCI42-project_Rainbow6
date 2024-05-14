@@ -9,9 +9,9 @@
 </h1>
 
 {% if user.is_authenticated %}
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in. <br> Not you? <a href="logout/"> log out </a></p>
 {% else %}
-    <p>Welcome, new user. Please log in.</p>
+    <p>Welcome, new user. Please <a href="login/"> log in </a>.</p>
 {% endif %}
 
 <h2>
@@ -19,10 +19,6 @@
         Time is: <div id = "clock"></div>
     </div>
 </h2>
-
-<div class="map">
-    <img id = "map" src="{% static 'map.png' %}" class="map-image">
-</div>
 
 {% comment %} <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis urna eu libero tristique vehicula. Sed nisl purus, tristique sit amet accumsan sit amet, molestie eget enim. Phasellus pellentesque ex mauris, sit amet rhoncus ligula commodo non. Aenean ut ullamcorper est. Curabitur arcu turpis, sagittis non lorem eget, tempor facilisis massa. Vivamus viverra, urna quis interdum eleifend, quam lectus interdum erat, porttitor pulvinar lectus dui et nisi. Curabitur vulputate, urna at lobortis sagittis, magna tellus efficitur tellus, ut faucibus massa sapien non lacus. Sed fringilla ex id ipsum aliquet imperdiet. Morbi facilisis ullamcorper neque vel commodo. Morbi a nisi vel ipsum viverra hendrerit quis sit amet arcu. Vestibulum dui dui, luctus interdum turpis maximus, dictum lobortis elit. Sed elementum ac ipsum vel malesuada. Vivamus in commodo augue. Donec eu pretium risus. Ut id lacinia velit, accumsan porta sem.
 

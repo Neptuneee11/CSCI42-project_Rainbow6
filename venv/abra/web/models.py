@@ -5,7 +5,6 @@ class Customer(models.Model):
     First_Name = models.CharField(max_length=255)
     Last_Name = models.CharField(max_length=255)
 
-
 class Authentication(models.Model):
     Customer_ID = models.ForeignKey(Customer, on_delete=models.CASCADE)
     Password = models.CharField(max_length=255, primary_key=True)
