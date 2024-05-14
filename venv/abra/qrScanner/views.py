@@ -10,3 +10,6 @@ def qrScan_Rent(request):
 
 def qrScan_Return(request):
     return render(request, 'qrScanner/qrReturn.html')
+
+def qrScan(request):
+    return render(request, 'qrScanner/qrGET.html')

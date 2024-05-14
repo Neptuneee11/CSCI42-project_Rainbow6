@@ -1,180 +1,123 @@
 <!-- Index.html file -->
+{% extends "qrScanner/qrGET.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1.0">
+{% block forRentOrReturn %}
 
-	<link rel="stylesheet" href="{% static 'qrAesthetic.css' %}">
-	<title>QR Code Scanner / Reader
-	</title>
-</head>
+//check if bicycle is available
+console.log(post);
 
-<body>
-	<div class="container">
-		<h1>Rent the bike by scanning the qr code</h1>
-		<div class="section">
-			<div id="my-qr-reader">
-			</div>
-		</div>
-	</div>
+if (post.STATE == 'available'){
+	var locationHere = "Nan";
+	var isFinn = false;
 
-	<script>
-		
-	</script>
+	//geolocation
+	if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(getBuilding);
+	console.log("geolocation works");
+	} else {
+	console.log("no geolocation");
+	alert("Geolocation is not supported by this browser.");}
 
-	<script
-		src="https://unpkg.com/html5-qrcode">
-	</script>
 
-	<script>
-		function domReady(fn) {
-			if (
-				document.readyState === "complete" ||
-				document.readyState === "interactive"
-			) {
-				setTimeout(fn, 1000);
-			} else {
-				document.addEventListener("DOMContentLoaded", fn);
+	//add the map hitbox
+	function getBuilding(position) {
+		console.log("geolocation works 2");
+
+		console.log(decodeText);
+
+		//hiboxes of each
+		const location_dict = {
+			// key:  lat1, long1, lat 2, long 2
+			"BEL":[14.641718, 121.079131, 14.641416, 121.080140],
+			"MACCI":[14.637672, 121.076624, 14.637371, 121.077353],
+			"LEO":[14.640792, 121.075870, 14.640454, 121.076685],
+			"CTC":[14.638508, 121.075678, 14.637954, 121.076508],
+			"SEM":[14.635424, 121.080596, 14.634748, 121.081836],
+		};
+
+		var latitude = position.coords.latitude;
+		var longitude = position.coords.longitude;
+
+		for (const loc in location_dict){
+			let arr = location_dict[loc];
+
+			//check if both coordinates are within bounds
+			if ((latitude >= arr[2] && latitude <= arr[0]) && (longitude >= arr[1] && longitude <= arr[3])){
+					locationHere = loc;
+					isFinn = true;
+					break;
 			}
+			
 		}
-		 
-		domReady(function () {
-		 
-			// If found you qr code
-			function onScanSuccess(decodeText, decodeResult) {
-				alert("Successfully scanned qr code");
-				// send a post request to the django server to change the state of the bike
-				 
-				// Function to get the CSRF token from the cookie
-				function getCookie(name) {
-					const value = `; ${document.cookie}`;
-					const parts = value.split(`; ${name}=`);
-					if (parts.length === 2) return parts.pop().split(';').shift();
-				}
-		 
-				// Function to send a POST request with CSRF token
-				
-				const csrfToken = getCookie('csrftoken');
 
-				var locationHere = "Nan";
-				var isFinn = false;
+		
 
-				//geolocation
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(getBuilding);
-					console.log("geolocation works");
-				} else {
-					console.log("no geolocation");
-					alert("Geolocation is not supported by this browser.");}
+		const data = { state: 'in_use' , location: locationHere};
 
-
-				//add the map hitbox
-				function getBuilding(position) {
-					console.log("geolocation works 2");
-
-					console.log(decodeText);
-					
-					//hiboxes of each
-					const location_dict = {
-						// key:  lat1, long1, lat 2, long 2
-						"BEL":[14.641718, 121.079131, 14.641416, 121.080140],
-						"MACCI":[14.637672, 121.076624, 14.637371, 121.077353],
-						"LEO":[14.640792, 121.075870, 14.640454, 121.076685],
-						"CTC":[14.638508, 121.075678, 14.637954, 121.076508],
-						"SEM":[14.635424, 121.080596, 14.634748, 121.081836],
-					};
-
-					var latitude = position.coords.latitude;
-					var longitude = position.coords.longitude;
-
-					for (const loc in location_dict){
-						let arr = location_dict[loc];
-
-						//check if both coordinates are within bounds
-						if ((latitude >= arr[2] && latitude <= arr[0]) && (longitude >= arr[1] && longitude <= arr[3])){
-								locationHere = loc;
-								isFinn = true;
-								break;
-							}
-						
-						}
-					
-						
-
-					const data = { state: 'in_use' , location: locationHere};
-					
-					// post request to bicycle db
-					fetch(decodeText, {
-						method: 'POST',
-						headers: {
-							'X-CSRFToken': csrfToken // Include the CSRF token in the header
-						},
-						body: JSON.stringify(data)
-					})
-					.then(response => response.json())
-					.then(data => {
-						console.log('Response from server:', data);
-					})
-					.catch(error => {
-						console.error('Error:', error);
-					});
-
-					var cucu = String('{{user.username}}');
-
-					const data2 = { customer: cucu, };
-
-					//post request to transactions
-					fetch("//transactions", {
-						method: 'POST',
-						headers: {
-							'X-CSRFToken': csrfToken // Include the CSRF token in the header
-						},
-						body: JSON.stringify(data2)
-					})
-					.then(response => response.json())
-					.then(data => {
-						console.log('Response from server:', data);
-					})
-					.catch(error => {
-						console.error('Error:', error);
-					});
-
-					const data3 = { currentlyRenting: true };
-
-					//post request to Web
-					fetch("//web", {
-						method: 'POST',
-						headers: {
-							'X-CSRFToken': csrfToken // Include the CSRF token in the header
-						},
-						body: JSON.stringify(data3)
-					})
-					.then(response => response.json())
-					.then(data => {
-						console.log('Response from server:', data);
-					})
-					.catch(error => {
-						console.error('Error:', error);
-					});
-					
-			
-					window.location.href = '../../web'; 
-				}
-				
-			}
-		 
-			let htmlscanner = new Html5QrcodeScanner(
-				"my-qr-reader",
-				{ fps: 10, qrbos: 250 }
-			);
-			htmlscanner.render(onScanSuccess);
-			
+		// post request to bicycle db
+		fetch(decodeText, {
+			method: 'POST',
+			headers: {
+				'X-CSRFToken': csrfToken // Include the CSRF token in the header
+			},
+			body: JSON.stringify(data)
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Response from server:', data);
+		})
+		.catch(error => {
+			console.error('Error:', error);
 		});
-	</script>
-</body>
 
-</html>
+		var cucu = String('{{user.username}}');
+
+		const data2 = { customer: cucu, bicycle: decodeText, action:"Rent" };
+
+		//post request to transactions
+		fetch("//localhost:8000/transactions/", {
+			method: 'POST',
+			headers: {
+				'X-CSRFToken': csrfToken // Include the CSRF token in the header
+			},
+			body: JSON.stringify(data2)
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Response from server:', data);
+		})
+		.catch(error => {
+			console.error('Error:', error);
+		});
+
+		const data3 = { currentlyRenting: true, currentBicycle: decodeText };
+
+		//post request to Web
+		fetch("//localhost:8000/web/", {
+			method: 'POST',
+			headers: {
+				'X-CSRFToken': csrfToken // Include the CSRF token in the header
+			},
+			body: JSON.stringify(data3)
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Response from server:', data);
+		})
+		.catch(error => {
+			console.error('Error:', error);
+		});
+	}
+
+} else {
+	console.log("Bike is still being used by someone else");
+}
+
+
+
+
+{% endblock %}
+
+	
+

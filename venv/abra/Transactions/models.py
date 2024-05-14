@@ -1,7 +1,9 @@
 from django.db import models
 from django.core.validators import RegexValidator
 from bicycles.models import Bicycle
-from Customer.models import UserProfile
+from django.contrib.auth.models import User
+
+import datetime
 
 # Create your models here.
 # dsd
@@ -15,7 +17,8 @@ class Transaction(models.Model):
                 code="invalid_transaction_number"
             )
         ])
-    Customer_ID = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    Customer_ID = models.ForeignKey(User, on_delete=models.CASCADE)
     Bike_NO = models.ForeignKey(Bicycle, on_delete=models.CASCADE)
-    Duration = models.IntegerField()
-    Price = models.IntegerField()
+    transaction_time = models.DateTimeField(default=datetime.datetime.now)
+    Duration = models.DurationField(default =datetime.timedelta(seconds=0, minutes=0, hours=0))
+    Price = models.DecimalField(default=0, decimal_places=2, max_digits=12)

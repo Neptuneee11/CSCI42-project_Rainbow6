@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import register
+from .views import logPage
 
 urlpatterns = [
-    path('', register, name='transact'),
+    path('', logPage, name='transact'),
 ]
 
 app_name = "transactions"

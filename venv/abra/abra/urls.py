@@ -24,7 +24,7 @@ urlpatterns = [
     path('web/', include('web.urls', namespace='web')),
     path('bicycleScanner/', include('qrScanner.urls', namespace="qrScanner")),
     path('bicycles/', include('bicycles.urls', namespace='bicycle')),
-    path('', include('web.urls', namespace='web')),
+    path('', include('web.urls', namespace='login')),
     path("accounts/", include("django.contrib.auth.urls")),
 
     # Account Creation URL
@@ -35,5 +35,8 @@ urlpatterns = [
 
     # customer profile url
     path('customer/', include('Customer.urls', namespace='customer')),
+
+    # transactions
+    path('transactions/', include('Transactions.urls', namespace='transactions')),
 
 ]

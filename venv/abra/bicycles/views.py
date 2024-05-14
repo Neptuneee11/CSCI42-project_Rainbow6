@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+from django.http import JsonResponse
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.shortcuts import render
@@ -20,6 +22,19 @@ def bicycleDetailView(request, pk):
         bicy.location = post_data['location']
 
         bicy.save()
+    
+    if request.method == 'GET':
+
+        data = {}
+        data["ID"] = bicy.pk
+        data["STATE"] = bicy.state
+        data["LOCATION"] = bicy.location
+        
+        return JsonResponse(data)
+        
+        #return HttpResponse("SOMETHING IS COMING")
+        
+        
         
     return render(request,'bicycles/bicycleDetail.html', {'object' : bicy})
 

@@ -1,11 +1,65 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Transaction
+from bicycles.models import Bicycle
+from django.contrib.auth.models import User
+import datetime
+import math
+
 
 # Create your views here.
-def register(request):
+def logPage(request):
     if request.method == "POST":
         import json
         post_data = json.loads(request.body.decode("utf-8"))
-        print(post_data['customer'])
+        customer_username = post_data['customer']
+        bicycle_link = post_data['bicycle']
+        transaction_type = post_data['action']
 
-    return render(request)
+        #extract bicycle ID from link   
+        #http://localhost:8000/bicycles/1/details/
+
+        #single out the pkey from the link
+        bicycle_pkey = ""
+        exttt = 0
+        leChar = ""
+        while leChar != "/":
+            leChar = bicycle_link[bicycle_link.find("/bicycles/")+len("/bicycles/")+ext]
+            print(leChar)
+            exttt+=1
+            bicycle_pkey+=leChar
+        bicycle_pkey.pop(len(bicycle_pkey)-1)
+
+        if transaction_type == "Rent":
+            Transaction.objects.create(
+                Customer_ID = User,
+                Bike_NO = Bicycle.objects.get(pk=bicycle_pkey),
+            )
+            
+        elif transaction_type == "Return":
+            def rentRate(dur):
+                #resolution is 5 mins
+                mins = dur/datetime.timedelta(minutes=5)
+
+                # first 30 mins have a flat rate of 15 pesos
+                if (mins <= 6):
+                    return 15
+                
+                # every 5 min extension adds 5 pesos to the bill
+                else:
+                    mins = mins-6
+                    ans = math.ceil(mins*5)
+                    return ans
+
+            Transaction.objects.create(
+                Customer_ID = User,
+                Bike_NO = Bicycle.objects.get(pk=bicycle_pkey),
+                Duration = datetime.datetime.now() - User.profile.transaction_time,
+                Price = rentRate(datetime.datetime.now() - User.profile.transaction_time)
+            )
+            
+
+
+        
+    
+    return HttpResponse("Thank")
