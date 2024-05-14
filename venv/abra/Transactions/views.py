@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Transaction
 from bicycles.models import Bicycle
+from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
 import math
@@ -33,6 +34,7 @@ def logPage(request):
             Transaction.objects.create(
                 Customer_ID = request.user,
                 Bike_NO = Bicycle.objects.get(pk=bicycle_pkey[:-1]),
+                transaction_type = "RENT",
             )
             
         elif transaction_type == "Return":
@@ -52,9 +54,10 @@ def logPage(request):
 
             Transaction.objects.create(
                 Customer_ID = request.user,
-                Bike_NO = Bicycle.objects.get(pk=bicycle_pkey),
-                Duration = datetime.datetime.now() - request.user.profile.transaction_time,
-                Price = rentRate(datetime.datetime.now() - request.user.profile.transaction_time)
+                Bike_NO = Bicycle.objects.get(pk=bicycle_pkey[:-1]),
+                Duration = timezone.now() - request.user.profile.time_since_last_rent,
+                Price = rentRate(timezone.now() - request.user.profile.time_since_last_rent),
+                transaction_type = "RETURN",
             )
             
 

@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from .models import customerActions
-from Transactions.models import Transaction
-import datetime
+from django.utils import timezone
+from datetime import datetime
 from bicycles.models import Bicycle
 
 def index(request):
@@ -20,24 +20,24 @@ def home(request):
 
         currentCustomer.isRenting = post_data['currentlyRenting']
         bicycle_link = post_data['currentBicycle']
-
-        #single out the pkey from the link
-        bicycle_pkey = ""
-        exttt = 0
-        leChar = ""
-        while leChar != "/":
-            leChar = bicycle_link[bicycle_link.find("/bicycles/")+len("/bicycles/")+exttt]
-            print(leChar)
-            exttt+=1
-            bicycle_pkey+=leChar
         
         if currentCustomer.isRenting:
-            currentCustomer.time_since_last_rent = datetime.datetime.now()
+            #single out the pkey from the link
+            bicycle_pkey = ""
+            exttt = 0
+            leChar = ""
+            while leChar != "/":
+                leChar = bicycle_link[bicycle_link.find("/bicycles/")+len("/bicycles/")+exttt]
+                print(leChar)
+                exttt+=1
+                bicycle_pkey+=leChar
+
+            currentCustomer.time_since_last_rent = timezone.now()
             currentCustomer.currentlyRenting = Bicycle.objects.get(pk=bicycle_pkey[:-1])
-            currentCustomer.time_since_last_rent = datetime.datetime.now()
 
         else:
-            pass
+            currentCustomer.time_since_last_rent = None
+            currentCustomer.currentlyRenting = None
 
         currentCustomer.save()
     

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from bicycles.models import Bicycle
-import datetime
+from datetime import datetime, timezone
 
 # client side data
 class customerActions(models.Model):
