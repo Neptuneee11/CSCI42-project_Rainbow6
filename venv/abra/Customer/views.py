@@ -5,12 +5,12 @@ from web.models import customerActions
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views import View
+from django.db import transaction
 from django.views.generic.edit import FormView
 
 # Create your views here.
 
-
-
+#@transaction.atomic
 class RegisterView(FormView):
 
     #form_class = RegisterForm
@@ -19,16 +19,20 @@ class RegisterView(FormView):
 
     def get(self, request, *args, **kwargs):
         form = RegisterForm(initial=self.initial)
+
         return render(request, self.template_name, {'form': form})
 
+    @transaction.atomic
     def post(self, request, *args, **kwargs):
+
         form = RegisterForm(request.POST)
 
         print(form)
-
+        
         if form.is_valid():
+            print("FOrm is valid")
             try:
-                newProfile = form.save()
+                newProfile = form.save(commit=False)
                 idNum = form.cleaned_data['id_number']
                 schYear = form.cleaned_data['school_year']
                 cou = form.cleaned_data['course']
@@ -50,14 +54,23 @@ class RegisterView(FormView):
                 #messages.success(request, f'Account created for {username}')
                 print(f"Account create for {username}")
 
+                form.save()
+
                 return redirect(to='/')
             
             except:
                 print("Account creation failed due to incorrect forms")
+                # delete newly created user
+
+
+                
+        
+        return render(request, self.template_name, {'form': form})
+       
             
             
 
-        return render(request, self.template_name, {'form': form})
+        
 
 @login_required
 def profile(request):
