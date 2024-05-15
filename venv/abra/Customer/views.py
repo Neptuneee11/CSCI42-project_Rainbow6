@@ -32,13 +32,15 @@ class RegisterView(FormView):
         if form.is_valid():
             print("FOrm is valid")
             try:
-                newProfile = form.save(commit=False)
+                newProfile = form.save(commit=True)
                 idNum = form.cleaned_data['id_number']
                 schYear = form.cleaned_data['school_year']
                 cou = form.cleaned_data['course']
                 cpN = form.cleaned_data['phone_number']
 
                 username = form.cleaned_data.get('username')
+
+                print("information got")
 
                 UserProfile.objects.create(
                     user = newProfile,
@@ -48,8 +50,10 @@ class RegisterView(FormView):
                     phone_number = cpN,
                 )
 
+                print("userProfile Created")
+
                 customerActions.objects.create(
-                    user = newProfile,
+                    userConnected = newProfile,
                 )
                 #messages.success(request, f'Account created for {username}')
                 print(f"Account create for {username}")
@@ -61,6 +65,7 @@ class RegisterView(FormView):
             except:
                 print("Account creation failed due to incorrect forms")
                 # delete newly created user
+                
 
 
                 
