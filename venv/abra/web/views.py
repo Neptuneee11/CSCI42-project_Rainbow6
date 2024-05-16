@@ -47,9 +47,10 @@ def home(request):
 
     context = {
         "rentStatus" : currentCustomer.isRenting,
+        "timeStartRent" : currentCustomer.time_since_last_rent,
     }
 
-    return render(request, "home.html",context)
+    return render(request, "home.html", context)
 
 def logout_view(request):
     logout(request)
