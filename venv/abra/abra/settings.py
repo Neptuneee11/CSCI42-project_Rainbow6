@@ -90,7 +90,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'abra',  
         'USER': 'root',  
-        'PASSWORD': os.getenv("SECRET_MYSQL"),  
+        # Change this to whatever password you have
+        'PASSWORD': "getgood",  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
@@ -151,5 +152,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/web"
 
 LOGIN_URL = "/"
+
+LOGOUT_REDIRECT_URL = "/login/"
 
 CRISPY_TEMPLATE_PACK="bootstrap4"
