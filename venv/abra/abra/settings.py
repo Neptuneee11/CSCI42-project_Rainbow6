@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'abra',  
         'USER': 'root',  
         # Change this to whatever password you have
-        'PASSWORD': "4090632Ab",  
+        'PASSWORD': os.getenv("SECRET_MYSQL"),  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  

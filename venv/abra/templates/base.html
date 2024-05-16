@@ -72,14 +72,8 @@
  
 <body>
 	<div class="sidenav">
-        <img src="{% static 'logo.jpg' %}" width= "125" height="50" alt="Resized Image">
-		{% if user.is_authenticated %}
-		<a href="/web">Home</a>
-		<a href="/bicycles">Bicycle</a>
-		<a href="/customer/profile">Profile</a>
-        <a href="/bicycleScanner/scan">QR Scanner</a>
-		{% endif %}
-
+        {% block nav %}
+		{% endblock %}
 	</div>
     <div class="main">
 		{% block content %}
