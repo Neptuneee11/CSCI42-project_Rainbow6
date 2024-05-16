@@ -67,5 +67,10 @@ class RegisterView(FormView):
 
 @login_required
 def profile(request):
+    context = {
+        "rentStatus" : request.user.profile.isRenting,
+        "timeStartRent" : request.user.profile.time_since_last_rent,
+    }
     return render(request, 'users/profile.html')
+
 

@@ -8,7 +8,7 @@
 <img src="{% static 'logo.jpg' %}">
 <a href="/web">Home</a>
 <a href="/bicycles/">View Bicycles</a>
-<a href="/2">Profile</a>
+<a href="/customer/profile">Profile</a>
 
 {% if not rentStatus %}
 <a href="/bicycleScanner/rent">Rent a bike</a>
@@ -24,9 +24,14 @@
 </h1>
 
 {% if user.is_authenticated %}
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in. <br> Not you? <a href="logout/"> log out </a></p>
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in. <br> Not you? 
+        <form method="POST" action="{% url 'logout' %}" class="form-group">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">log out</button>
+        </form>
+
 {% else %}
-    <p>Welcome, new user. Please <a href="login/"> log in </a>.</p>
+    <p>Welcome, new user. Please <a href="login/"> log in </a> or create an<a href="{% url 'register' %}"> account</a>.</p>
 {% endif %}
 
 <h2>
