@@ -14,10 +14,14 @@
 <a href="/bicycleScanner/rent">Rent a bike</a>
 {% else %}
 <a href="/bicycleScanner/return">Return a bike</a>
-{% endif %}
+
+<!--
+    {% endif %}
 
 <a href="/2">Transactions</a>
 {% endblock %}
+-->
+
 
 {% block content %}
 <h1>
@@ -25,7 +29,12 @@
 </h1>
 
 {% if user.is_authenticated %}
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in. <br> Not you? <a href="logout/"> log out </a></p>
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in. <br> Not you? 
+        <form method="POST" action="{% url 'logout' %}" class="form-group">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">log out</button>
+        </form>
+        
 {% else %}
     <p>Welcome, new user. Please <a href="login/"> log in </a>.</p>
 {% endif %}
@@ -40,3 +49,4 @@
 
     Suspendisse a tristique dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eu felis pharetra, consequat arcu nec, imperdiet libero. Sed ultricies risus felis. Praesent vehicula nibh ut tortor gravida tincidunt. Morbi aliquam dapibus leo, non mollis dui tempor et. Integer hendrerit sollicitudin orci, ac efficitur nisl rhoncus nec. Cras quis justo libero. Curabitur finibus ipsum in ex posuere, vel fringilla orci sollicitudin. Sed nec ex nec leo efficitur placerat. Duis elementum, libero et congue ullamcorper, sapien felis viverra tellus, mattis tristique urna ligula a dolor. Sed faucibus sit amet ex non fringilla. </p> {% endcomment %}
 {% endblock %}
+
