@@ -2,6 +2,12 @@
 {% extends "qrScanner/qrGET.html" %}
 {% load static %}
 
+{% block headerInstructions %}
+		
+		<h1>Return the bike you rented by scanning the qr code</h1>
+
+{% endblock %}
+
 {% block forRentOrReturn %}
 
 //check if the bicycle scanned is the one the person owns
@@ -115,9 +121,12 @@ if(decodeText.includes("{{rentedBike}}")){
 
 	}
 
+	document.getElementById("backToWeb").style.visibility = "visible";
+
 }
 else{
 	console.log("That's not the bike you rented");
+	alert("That's not the bike you rented");
 }
 
 

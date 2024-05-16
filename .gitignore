@@ -12,3 +12,4 @@ media
 *.pyc
 
 *.pyc
+/venv/Lib

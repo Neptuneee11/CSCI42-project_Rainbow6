@@ -14,11 +14,15 @@
 
 <body>
 	<div class="container">
-		<h1>Rent the bike by scanning the qr code</h1>
+		{% block headerInstructions %}
+		{% endblock %}
 		<div class="section">
 			<div id="my-qr-reader">
 			</div>
 		</div>
+		<form action="../../web/">
+			<input id="backToWeb" type="submit" value="Back to home" />
+		</form>
 	</div>
 
 	<script>

@@ -2,6 +2,12 @@
 {% extends "qrScanner/qrGET.html" %}
 {% load static %}
 
+{% block headerInstructions %}
+		
+		<h1>Rent the bike by scanning the qr code</h1>
+
+{% endblock %}
+
 {% block forRentOrReturn %}
 
 //check if bicycle is available
@@ -110,6 +116,10 @@ if (post.STATE == 'available'){
 			console.error('Error:', error);
 		});
 	}
+
+	
+	document.getElementById("backToWeb").style.visibility = "visible";
+	
 
 } else {
 	console.log("Bike is still being used by someone else");
