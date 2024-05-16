@@ -2,16 +2,27 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.db.models import Sum
 from .models import customerActions
 from django.utils import timezone
 from datetime import datetime
 from bicycles.models import Bicycle
+from Transactions.models import Transaction
 
 def index(request):
     return render(request, 'index.html')
 
 def home(request):
     currentCustomer = customerActions.objects.get(userConnected=request.user)
+
+    charge = Transaction.objects.filter(Customer_ID=request.user).aggregate(Sum("Price"))
+
+    print("THIS CUSTOMER OWES US " + str(charge["Price__sum"]) + "Pesos")
+
+    thisCust = customerActions.objects.get(userConnected=request.user)
+
+    thisCust.charge = charge["Price__sum"]
+    thisCust.save()
 
     if request.method == "POST":
         print("YIPEEEE")

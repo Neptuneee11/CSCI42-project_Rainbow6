@@ -29,6 +29,8 @@
     <p>School Year: {{ user.userprofile.school_year }}</p>
     <p>Course: {{ user.userprofile.course }}</p>
 
+    <p><b>Bill: {{ zenbu_de }} Php </b></p>
+
     <form method="POST" action="{% url 'logout' %}" class="form-group">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Logout</button>
