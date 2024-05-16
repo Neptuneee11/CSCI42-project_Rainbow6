@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'abra',  
         'USER': 'root',  
         # Change this to whatever password you have
-        'PASSWORD': "getgood",  
+        'PASSWORD': "4090632Ab",  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  

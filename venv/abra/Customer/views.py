@@ -1,16 +1,15 @@
 from pyexpat.errors import messages
 from .forms import RegisterForm
 from .models import UserProfile
-from web.models import customerActions
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from django.db import transaction
 from django.views.generic.edit import FormView
 
 # Create your views here.
 
-#@transaction.atomic
+
+
 class RegisterView(FormView):
 
     #form_class = RegisterForm
@@ -18,64 +17,36 @@ class RegisterView(FormView):
     template_name = 'register/register.html'
 
     def get(self, request, *args, **kwargs):
-        form = RegisterForm(initial=self.initial)
-
+        form = self.form_class(initial=self.initial)
         return render(request, self.template_name, {'form': form})
 
-    @transaction.atomic
     def post(self, request, *args, **kwargs):
-
         form = RegisterForm(request.POST)
 
         print(form)
-        
+
         if form.is_valid():
-            print("FOrm is valid")
-            try:
-                newProfile = form.save(commit=True)
-                idNum = form.cleaned_data['id_number']
-                schYear = form.cleaned_data['school_year']
-                cou = form.cleaned_data['course']
-                cpN = form.cleaned_data['phone_number']
+            newProfile = form.save()
+            idNum = form.cleaned_data['id_number']
+            schYear = form.cleaned_data['school_year']
+            cou = form.cleaned_data['course']
+            cpN = form.cleaned_data['phone_number']
 
-                username = form.cleaned_data.get('username')
+            username = form.cleaned_data.get('username')
 
-                print("information got")
+            UserProfile.objects.create(
+                user = newProfile,
+                id_number = idNum,
+                school_year = schYear,
+                course = cou,
+                phone_number = cpN,
+            )
+            #messages.success(request, f'Account created for {username}')
+            print(f"Account create for {username}")
 
-                UserProfile.objects.create(
-                    user = newProfile,
-                    id_number = idNum,
-                    school_year = schYear,
-                    course = cou,
-                    phone_number = cpN,
-                )
+            return redirect(to='/')
 
-                print("userProfile Created")
-
-                customerActions.objects.create(
-                    userConnected = newProfile,
-                )
-                #messages.success(request, f'Account created for {username}')
-                print(f"Account create for {username}")
-
-                form.save()
-
-                return redirect(to='/')
-            
-            except:
-                print("Account creation failed due to incorrect forms")
-                # delete newly created user
-                
-
-
-                
-        
         return render(request, self.template_name, {'form': form})
-       
-            
-            
-
-        
 
 @login_required
 def profile(request):
