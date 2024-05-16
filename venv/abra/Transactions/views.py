@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Transaction
 from bicycles.models import Bicycle
+from web.models import customerActions
 from django.utils import timezone
 from django.contrib.auth.models import User
 import datetime
@@ -59,9 +60,10 @@ def logPage(request):
                 Price = rentRate(timezone.now() - request.user.profile.time_since_last_rent),
                 transaction_type = "RETURN",
             )
-            
 
-
-        
+            # add to the customer's bill
+            thisCust = customerActions.objects.get(userConnected=request.user)
+            thisCust.charge += rentRate(timezone.now() - request.user.profile.time_since_last_rent)
+            thisCust.save()
     
     return HttpResponse("Thank")

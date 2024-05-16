@@ -10,7 +10,7 @@
     <a href="/bicycles/">View Bicycles</a>
     <a href="/customer/profile">Profile</a>
 
-    {% if rentStatus %}
+    {% if not rentStatus %}
     <a href="/bicycleScanner/rent">Rent a bike</a>
     {% else %}
     <a href="/bicycleScanner/return">Return a bike</a>

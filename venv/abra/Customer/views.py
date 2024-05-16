@@ -69,20 +69,11 @@ class RegisterView(FormView):
 
 @login_required
 def profile(request):
-    # get the transactions under the name of the user
-    charge = Transaction.objects.filter(Customer_ID=request.user).aggregate(Sum("Price"))
-
-    print("THIS CUSTOMER OWES US " + str(charge["Price__sum"]) + "Pesos")
-
-    thisCust = customerActions.objects.get(userConnected=request.user)
-
-    thisCust.charge = charge["Price__sum"]
-    thisCust.save()
 
     context = {
         "rentStatus" : request.user.profile.isRenting,
         "timeStartRent" : request.user.profile.time_since_last_rent,
-        "zenbu_de" : charge["Price__sum"],
+        "zenbu_de" : request.user.profile.charge,
     }
     return render(request, 'users/profile.html',context)
 
