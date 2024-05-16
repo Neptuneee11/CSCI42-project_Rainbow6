@@ -1,0 +1,138 @@
+<!-- Index.html file -->
+{% extends "qrScanner/qrGET.html" %}
+{% load static %}
+
+{% block headerInstructions %}
+		
+		<h1>Return the bike you rented by scanning the qr code</h1>
+
+{% endblock %}
+
+{% block forRentOrReturn %}
+
+//check if the bicycle scanned is the one the person owns
+
+console.log(decodeText)
+if(decodeText.includes("{{rentedBike}}")){
+
+	var locationHere = "Nan";
+	var isFinn = false;
+	
+	//geolocation
+	if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(getBuilding);
+	console.log("geolocation works");
+	} else {
+	console.log("no geolocation");
+	alert("Geolocation is not supported by this browser.");}
+	
+	
+	//add the map hitbox
+	function getBuilding(position) {
+	console.log("geolocation works 2");
+	
+	console.log(decodeText);
+	
+	//hiboxes of each
+	const location_dict = {
+		// key:  lat1, long1, lat 2, long 2
+		"BEL":[14.641718, 121.079131, 14.641416, 121.080140],
+		"MACCI":[14.637672, 121.076624, 14.637371, 121.077353],
+		"LEO":[14.640792, 121.075870, 14.640454, 121.076685],
+		"CTC":[14.638508, 121.075678, 14.637954, 121.076508],
+		"SEM":[14.635424, 121.080596, 14.634748, 121.081836],
+	};
+	
+	var latitude = position.coords.latitude;
+	var longitude = position.coords.longitude;
+	
+	for (const loc in location_dict){
+		let arr = location_dict[loc];
+	
+		//check if both coordinates are within bounds
+		if ((latitude >= arr[2] && latitude <= arr[0]) && (longitude >= arr[1] && longitude <= arr[3])){
+				locationHere = loc;
+				isFinn = true;
+				break;
+			}
+		
+		}
+	
+	//
+	
+		
+	
+	const data = { state: 'available' , location: locationHere};
+	
+	// post request to bicycle db
+	fetch(decodeText, {
+		method: 'POST',
+		headers: {
+			'X-CSRFToken': csrfToken // Include the CSRF token in the header
+		},
+		body: JSON.stringify(data)
+	})
+	.then(response => response.json())
+	.then(data => {
+		console.log('Response from server:', data);
+	})
+	.catch(error => {
+		console.error('Error:', error);
+	});
+	
+	var cucu = String('{{user.username}}');
+	
+	const data2 = { customer: cucu, bicycle: decodeText, action:"Return"};
+	
+	//post request to transactions
+	fetch("../../transactions/", {
+		method: 'POST',
+		headers: {
+			'X-CSRFToken': csrfToken // Include the CSRF token in the header
+		},
+		body: JSON.stringify(data2)
+	})
+	.then(response => response.json())
+	.then(data => {
+		console.log('Response from server:', data);
+	})
+	.catch(error => {
+		console.error('Error:', error);
+	});
+	
+	const data3 = { currentlyRenting: false, currentBicycle: "None" };
+	
+	//post request to Web
+	fetch("../../web/", {
+		method: 'POST',
+		headers: {
+			'X-CSRFToken': csrfToken // Include the CSRF token in the header
+		},
+		body: JSON.stringify(data3)
+	})
+	.then(response => response.json())
+	.then(data => {
+		console.log('Response from server:', data);
+		//window.location.href = '../../web'; 
+	})
+	.catch(error => {
+		console.error('Error:', error);
+	});
+
+	}
+
+	document.getElementById("backToWeb").style.visibility = "visible";
+
+}
+else{
+	console.log("That's not the bike you rented");
+	alert("That's not the bike you rented");
+}
+
+
+
+
+{% endblock %}
+
+	
+

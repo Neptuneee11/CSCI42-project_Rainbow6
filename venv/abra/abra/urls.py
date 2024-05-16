@@ -16,10 +16,27 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from Customer.views import RegisterView
 
 urlpatterns = [
+    # Default URL
     path('admin/', admin.site.urls),
     path('web/', include('web.urls', namespace='web')),
-    path('', include('web.urls', namespace='web')),
+    path('bicycleScanner/', include('qrScanner.urls', namespace="qrScanner")),
+    path('bicycles/', include('bicycles.urls', namespace='bicycle')),
+    path('', include('web.urls', namespace='login')),
     path("accounts/", include("django.contrib.auth.urls")),
+
+    # Account Creation URL
+    path('register/', RegisterView.as_view(), name="register"),
+
+    # Account Login URL (secretly a "login/")
+    path('', include("django.contrib.auth.urls")),
+
+    # customer profile url
+    path('customer/', include('Customer.urls', namespace='customer')),
+
+    # transactions
+    path('transactions/', include('Transactions.urls', namespace='transactions')),
+
 ]

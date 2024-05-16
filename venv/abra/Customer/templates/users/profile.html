@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}User Information{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block nav %}
+    <img src="{% static 'logo.jpg' %}">
+    <a href="/web">Home</a>
+    <a href="/bicycles/">View Bicycles</a>
+    <a href="/customer/profile">Profile</a>
+
+    {% if not rentStatus %}
+    <a href="/bicycleScanner/rent">Rent a bike</a>
+    {% else %}
+    <a href="/bicycleScanner/return">Return a bike</a>
+    {% endif %}
+
+{% endblock %}
+
+{% block content %}
+    <h2>User Information</h2>
+    <p>Username: {{ user.userprofile.user }}</p>
+    <p>First Name: {{ user.first_name }}</p>
+    <p>Last Name: {{ user.last_name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone Number: {{ user.userprofile.phone_number }}</p>
+    <p>ID Number: {{ user.userprofile.id_number }}</p>
+    <p>School Year: {{ user.userprofile.school_year }}</p>
+    <p>Course: {{ user.userprofile.course }}</p>
+
+    <p><b>Bill: {{ zenbu_de }} Php </b></p>
+
+    <form method="POST" action="{% url 'logout' %}" class="form-group">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+{% endblock %}

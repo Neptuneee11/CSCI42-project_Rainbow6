@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_DJANGO')
+SECRET_KEY = "v*#fbsd+#h-a895jv^ut!pm0)fn^%o5+i%2in+j_tlm8b_@8wl"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +42,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bicycles',
     'web',
+    'Transactions',
+    'Customer',
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'qrScanner',
 ]
 
 MIDDLEWARE = [
@@ -84,12 +90,18 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'abra',  
         'USER': 'root',  
-        'PASSWORD': os.getenv('SECRET_MYSQL'),  
+        # Change this to whatever password you have
+        'PASSWORD': os.getenv("SECRET_MYSQL"),  
         'HOST': '127.0.0.1',  
         'PORT': '3306',  
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"  
         }  
+    },
+
+    'for_qr': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -112,7 +124,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -130,7 +141,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / "static",
 ]
 
 # Default primary key field type
@@ -139,3 +150,9 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/web"
+
+LOGIN_URL = "/"
+
+LOGOUT_REDIRECT_URL = "/login/"
+
+CRISPY_TEMPLATE_PACK="bootstrap4"

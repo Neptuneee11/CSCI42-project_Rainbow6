@@ -1,21 +1,16 @@
 from django.db import models
+from django.contrib.auth.models import User
+from bicycles.models import Bicycle
+from datetime import datetime, timezone
 
-class Customer(models.Model):
-    Customer_ID = models.IntegerField(primary_key=True)
-    First_Name = models.CharField(max_length=255)
-    Last_Name = models.CharField(max_length=255)
+# client side data
+class customerActions(models.Model):
+    userConnected = models.OneToOneField(User, related_name="profile", on_delete=models.CASCADE)
 
+    isRenting = models.BooleanField(default=False)
+    currentlyRenting = models.OneToOneField(Bicycle, on_delete=models.SET_NULL, null=True, blank=True)
+    charge = models.IntegerField(default=0)
+    time_since_last_rent = models.DateTimeField(null=True, default=None, blank=True)
 
-class Authentication(models.Model):
-    Customer_ID = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    Password = models.CharField(max_length=255, primary_key=True)
-
-class Bike(models.Model):
-    Bike_NO = models.CharField(max_length=255, primary_key=True)
-
-class Transaction(models.Model):
-    Transaction_NO = models.CharField(max_length=255, primary_key=True)
-    Customer_ID = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    Bike_NO = models.ForeignKey(Bike, on_delete=models.CASCADE)
-    Duration = models.IntegerField()
-    Price = models.IntegerField()
+    def __str__(self):
+        return self.userConnected.username

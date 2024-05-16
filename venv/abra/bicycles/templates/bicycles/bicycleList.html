@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'bicycleDetailAesthetic.css' %}">
+	
+</head>
+
+{% block nav %}
+<img src="{% static 'logo.jpg' %}">
+<a href="/web">Home</a>
+<a href="/bicycles/">View Bicycles</a>
+<a href="/customer/profile">Profile</a>
+
+{% if rentStatus %}
+<a href="/bicycleScanner/rent">Rent a bike</a>
+{% else %}
+<a href="/bicycleScanner/return">Return a bike</a>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<body>
+    <table>
+        <tr> 
+            <td> <b>Primary_key </b></td>
+            <td> <b>State </b></td>
+            <td> <b>Location </b></td>
+            <!--<td> <b>Link </b></td>-->
+        </tr>
+        {% for object in object_list %}
+        <tr> 
+            <td> {{ object.pk }} </td>
+            <td> {{ object.state }} </td>
+            <td> {{ object.location }} </td>
+            <!--<td> <a href = "{{ object.get_absolute_url }}"> click here </a>-->
+        </tr>
+        {% endfor %}
+    </table>
+
+    <button onclick="reloadPage()">Reload Page</button>
+		<script>
+		function reloadPage() {
+			location.reload();
+		}
+		</script>
+</body>
+{% endblock %}
