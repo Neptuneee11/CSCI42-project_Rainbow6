@@ -54,24 +54,24 @@
 		.clock {
 			text-align: center;
 		}
-
-		.username {
-			text-align: center;
-		}
 		
 	</style>
-	<title>{% block title %}Tim's Site{% endblock %}</title>
+	<title>{% block title %}ABRA Site{% endblock %}</title>
 	<script src="{% static 'clock.js' %}"></script>
 </head>
  
 <body>
 	<div class="sidenav">
-		{% block nav %}
-		{% endblock %}
+        <img src="{% static 'logo.jpg' %}" width= "125" height="50" alt="Resized Image">
+		<a href="/web">Home</a>
+		<a href="/create">Bicycle</a>
+		<a href="/customer">Profile</a>
+        <a href="/2">QR Scanner</a>
+
 	</div>
     <div class="main">
-	{% block content %}
-	{% endblock %}
+		{% block content %}
+		{% endblock %}
     </div>
  
 </body>
