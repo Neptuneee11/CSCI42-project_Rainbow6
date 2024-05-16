@@ -70,3 +70,15 @@ video {
 	border: 1px solid #b2b2b2 !important;
 	border-radius: 0.25em;
 }
+
+#backToWeb{
+	padding: 15px;
+	background-color: #310d00;
+	visibility: visible;
+	color: whitesmoke;
+}
+
+#backToWeb:hover{
+	background-color: #5c1901;
+	transition: 300ms;
+}
